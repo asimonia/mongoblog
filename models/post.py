@@ -1,12 +1,17 @@
+import uuid
+from database import Database
+import datetime
+
 class Post:
 
-	def __init__(self, blog_id, title, content, author, date, id):
+	def __init__(self, blog_id, title, content, author, date=datetime.datetime.utcnow(), id=None):
+		"""universal unique id for each blog post"""
 		self.blog_id = blog_id
 		self.title = title
 		self.content = content
 		self.author = author
 		self.created_date = date
-		self.id = id
+		self.id = uuid.uuid4().hex if id is None else id
 
 	def save_to_mongo(self):
 		"""Save a post to the mongo database"""
