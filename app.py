@@ -1,10 +1,8 @@
-import pymongo
+from models.post import Post
 
-uri = "mongodb://127.0.0.1:27017"
-client = pymongo.MongoClient(uri)
-database = client['fullstack']
-collection = database['students']
+post = Post()
+post2 = Post()
+post2.content = "Some different content"
 
-students = collection.find({})
-
-print(students)
+print(post.content)
+print(post2.content)
